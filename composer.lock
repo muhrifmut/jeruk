@@ -905,6 +905,18 @@
         },
         {
             "name": "ramsey/uuid",
+<<<<<<< HEAD
+            "version": "3.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramsey/uuid.git",
+                "reference": "5677cfe02397dd6b58c861870dfaa5d9007d3954"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/5677cfe02397dd6b58c861870dfaa5d9007d3954",
+                "reference": "5677cfe02397dd6b58c861870dfaa5d9007d3954",
+=======
             "version": "3.5.1",
             "source": {
                 "type": "git",
@@ -915,6 +927,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/ramsey/uuid/zipball/a07797b986671b0dc823885a81d5e3516b931599",
                 "reference": "a07797b986671b0dc823885a81d5e3516b931599",
+>>>>>>> 322db19f3fbe8b6bdf731a12c5f972208c314ef1
                 "shasum": ""
             },
             "require": {
@@ -927,11 +940,19 @@
             "require-dev": {
                 "apigen/apigen": "^4.1",
                 "codeception/aspect-mock": "1.0.0",
+<<<<<<< HEAD
+                "doctrine/annotations": "~1.2.0",
+=======
+>>>>>>> 322db19f3fbe8b6bdf731a12c5f972208c314ef1
                 "goaop/framework": "1.0.0-alpha.2",
                 "ircmaxell/random-lib": "^1.1",
                 "jakub-onderka/php-parallel-lint": "^0.9.0",
                 "mockery/mockery": "^0.9.4",
                 "moontoast/math": "^1.1",
+<<<<<<< HEAD
+                "php-mock/php-mock-phpunit": "^0.3|^1.1",
+=======
+>>>>>>> 322db19f3fbe8b6bdf731a12c5f972208c314ef1
                 "phpunit/phpunit": "^4.7|>=5.0 <5.4",
                 "satooshi/php-coveralls": "^0.6.1",
                 "squizlabs/php_codesniffer": "^2.3"
@@ -981,7 +1002,11 @@
                 "identifier",
                 "uuid"
             ],
+<<<<<<< HEAD
+            "time": "2016-11-22T19:21:44+00:00"
+=======
             "time": "2016-10-02T15:51:17+00:00"
+>>>>>>> 322db19f3fbe8b6bdf731a12c5f972208c314ef1
         },
         {
             "name": "swiftmailer/swiftmailer",
