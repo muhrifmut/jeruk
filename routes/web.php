@@ -17,4 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'PegawaiController@index');
+Route::group(['middleware' => 'auth', 'prefix' => 'home'], function () {
+	Route::resource('pegawai', 'PegawaiController@index');
+
+    Route::get('/', function () {
+        return view('layouts.home');
+    });
+});
