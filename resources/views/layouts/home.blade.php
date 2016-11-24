@@ -57,31 +57,19 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{ URL::asset('dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{ Auth::user()->name }}</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="{{ URL::asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
-
-                <p>
-                  {{ Auth::user()->name }}
-                </p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-right">
-                    {!! Form::open(['route' => 'logout']) !!}
-                        <button type="submit" class="btn btn-default btn-flat">Sign out</a>
-                    {!! Form::close() !!}
-                </div>
-              </li>
-            </ul>
-          </li>
+                            <li>
+                              <a href="#"><i class="glyphicon glyphicon-user"></i> <span> {{ Auth::user()->name }}</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/logout') }}"
+                                    onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                                        <i class="glyphicon glyphicon-log-out"></i> <span>Logout</span>
+                                </a>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
         </ul>
       </div>
     </nav>
@@ -91,24 +79,38 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="{{ URL::asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>{{ Auth::user()->name }}</p>
-        </div>
-      </div>
-      <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
+      {!! Form::open(['route' => ['pegawai.store'], 'method' => 'GET', 'class' => 'sidebar-form']) !!}
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Seacrh...">
+          <span class="input-group-btn">
+            <button type="submit" name="search" id="serach-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+          </span>
+        </div>
+      {!! Form::close() !!}
+
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             @if (Auth::user()->status == 'admin')
-	            <li>
-	                <a href="{{ url('/home/pegawai') }}">
-	                    <i class="fa fa-table"></i> <span>Pegawai</span>
+	            <li calss="treeview">
+	                <a href="#">
+	                    <i class="glyphicon glyphicon-user"></i> <span>Pegawai</span>
 	                </a>
+                  <ul class="treeview-menu">
+                    <li><a href="{{ route('pegawai.index') }}">Data Pegawai</a></li>
+                    <li><a href="{{ route('pegawai.create') }}">Tambah Data Pegawai</a></li>
+                  </ul>
 	            </li>
+              <li calss="treeview">
+                  <a href="#">
+                      <i class="glyphicon glyphicon-list-alt"></i> <span>Menu</span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="#">Data Menu</a></li>
+                    <li><a href="#">Tambah Data Pegawai</a></li>
+                    <li><a href="#">Data Menu Baru</a></li>
+                  </ul>
+              </li>
             @endif
         </ul>
     </section>

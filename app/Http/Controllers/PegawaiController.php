@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
+use Auth;
 
 class PegawaiController extends Controller
 {
@@ -25,7 +27,8 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        //
+        $role = Role::all();
+        return view('admin.create', compact('role'));
     }
 
     /**
@@ -36,7 +39,21 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|regex:/^[\pL\s\-]+$/u|min:2',
+            'email' => 'required|unique:users,email',
+            'status' => 'required',
+            'password' => 'required|min:6',
+        ]);
+
+        \App\User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'status' => $request->input('status'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+
+        return redirect()->route('pegawai.index')->with('message', ['type' => 'success', 'text' => 'Data berhasil ditambahkan!']);
     }
 
     /**
@@ -58,7 +75,10 @@ class PegawaiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pegawai = User::find($id);
+        $role = Role::all();
+
+        return view('admin.edit', compact('pegawai', 'role'));
     }
 
     /**
@@ -70,7 +90,37 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $this->validate($request, [
+            'name' => 'required|regex:/^[\pL\s\-]+$/u|min:2',
+            'email' => 'required|email',
+            'status' => 'required',
+            'password' => 'min:6',
+        ]);
+
+        if($request->input('password') == null) {
+            $user->update([
+                'name' => $request->input('name'),
+                'status' => $request->input('status'),
+            ]);
+        } else {
+            $user->update([
+                'name' => $request->input('name'),
+                'status' => $request->input('status'),
+                'password' => bcrypt($request->input('password')),
+            ]);
+        }
+
+        if(($request->input('email') != $user->email) && (($request->input('email') != \App\User::all()->where('email',$request->input('email')))) ) {
+            $user->update([
+                'email' => $request->input('email'),
+            ]);
+        } else {
+            return redirect()->route('pegawai.index')->with('message', ['type' => 'success', 'text' => 'Email sudah digunakan!']);
+        }
+
+        return redirect()->route('pegawai.index')->with('message', ['type' => 'success', 'text' => 'Data berhasil diubah!']);
     }
 
     /**
@@ -81,6 +131,7 @@ class PegawaiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return redirect()->route('pegawai.index')->with('message', ['type' => 'danger', 'text' => 'Data telah dihapus!']);
     }
 }
