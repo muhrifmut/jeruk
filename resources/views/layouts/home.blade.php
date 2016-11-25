@@ -106,7 +106,7 @@
                       <i class="glyphicon glyphicon-list-alt"></i> <span>Menu</span>
                   </a>
                   <ul class="treeview-menu">
-                    <li><a href="#">Data Menu</a></li>
+                    <li><a href="{{ route('menu.index') }}">Data Menu</a></li>
                     <li><a href="#">Tambah Data Pegawai</a></li>
                     <li><a href="#">Data Menu Baru</a></li>
                   </ul>

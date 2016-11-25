@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth', 'prefix' => 'home'], function () {
 	Route::resource('pegawai', 'PegawaiController');
+	Route::resource('menu', 'MenuController');
 
 		Route::get('/', function () {
         	return view('layouts.index');

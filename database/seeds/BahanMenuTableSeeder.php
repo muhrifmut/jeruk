@@ -11,6 +11,9 @@ class BahanMenuTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\BahanMenu::class, 20)->create();
+        factory(App\BahanMenu::class, 20)->create([
+            'menu_id' => \App\Menu::orderBy(\DB::raw('RAND()'))->first()->id,
+            'bahan_id' => \App\Bahan::orderBy(\DB::raw('RAND()'))->first()->id,
+        ]);
     }
 }
