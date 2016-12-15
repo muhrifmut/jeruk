@@ -1,38 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Resto - HTML5/CSS3 Restaurant Home Page Website Template</title>
-    <meta charset="utf-8">
-    <meta name="author" content="pixelhint.com">
-    <meta name="description" content="Resto HTML5/CSS3 Restaurant Home Page website Template"/>
+@extends('layouts.landing')
 
-    <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/carouFredSel.js"></script>
-    <script type="text/javascript" src="js/easing.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-</head>
-<body>
-
-    <!--  start header  -->
-    <header>
-        <div class="wrapper">
-            <div class="logo">
-                <a href=""><img src="img/logo.png" alt="Resto" title=""/></a>
-            </div>
-
-            <nav>
-                <ul>
-                    <!--<li><a href="" class="active">Home</a></li>-->
-                    <li><a href="#menu">Menu</a></li>
-                    <li><a href="/login">Login</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header><!--  end header  -->
-
+@section('content')
 
     <!--  start hero  -->
     <section class="hero">
@@ -492,47 +460,4 @@
         </div>
     </section><!--  end gallery  -->
 
-
-    <!--  start footer  -->
-    <footer>
-        <div class="wrapper">
-            <!-- adresse1  -->
-            <section class="adress">
-                <p>New York Restaurant</p> 
-                <p class="location">3926 Anmoore Road<br/>
-                New York, NY 10014</p>
-                <p class="phone">718-749-1714</p>
-            </section>
-
-            <!--  adress2  -->
-            <section class="adress">
-                <p>France Restaurant</p>
-                <p class="location">68, rue  de la Couronne<br/>
-                75002 PARIS </p>
-                <p class="phone">02.94.23.69.56</p>
-            </section>
-
-            <!--  footer navigation  -->
-            <section class="footer_nav">
-                <nav>
-                    <ul>
-                        <li><a href="">Blog</a></li>
-                        <li><a href="">Careers</a></li>
-                        <li><a href="">Privacy Policy</a></li>
-                        <li><a href="">Contact</a></li>
-                    </ul>
-                </nav>
-            </section>
-
-            <!--  footer copyrights  -->
-            <section class="copyrights">
-                <img src="img/footer_logo.png" class="footer_logo" alt="" title="">
-                <p>© All Rights Reserved 2014.</p>
-                <p>Find  More at <a href="http://pixelhint.com" target="_blank">Pixelhint.com</a></p>   
-            </section>
-        </div>
-    </footer><!--  end footer  -->
-    <script src='../ga.js'></script>
-
-</body>
-</html>
+@endsection

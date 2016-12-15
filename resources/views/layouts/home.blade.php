@@ -30,6 +30,8 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{ URL::asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 
+  <link rel="shortcut icon" href="{{{ asset('img/resto.png') }}}">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -57,6 +59,9 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+                            <li>
+                              <a href="/"><i class="glyphicon glyphicon-home"></i> <span> Beranda</span></a>
+                            </li>
                             <li>
                               <a href="#"><i class="glyphicon glyphicon-user"></i> <span> {{ Auth::user()->name }}</span></a>
                             </li>
@@ -120,7 +125,7 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
         <section class="content">
-            @include('layouts.message')
+            @include('home.message')
             @yield('content')
         </section>
   </div>

@@ -17,7 +17,7 @@ class PegawaiController extends Controller
     public function index()
     {
         $pegawai = User::all();
-        return view('admin.index', compact('pegawai'));
+        return view('pegawai.index', compact('pegawai'));
     }
 
     /**
@@ -28,7 +28,7 @@ class PegawaiController extends Controller
     public function create()
     {
         $role = Role::all();
-        return view('admin.create', compact('role'));
+        return view('pegawai.create', compact('role'));
     }
 
     /**
@@ -78,7 +78,7 @@ class PegawaiController extends Controller
         $pegawai = User::find($id);
         $role = Role::all();
 
-        return view('admin.edit', compact('pegawai', 'role'));
+        return view('pegawai.edit', compact('pegawai', 'role'));
     }
 
     /**

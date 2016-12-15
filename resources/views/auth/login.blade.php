@@ -1,7 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.landing')
 
 @section('content')
-<div class="container">
+<div class="container" style="border-top: 1px #999999 solid">
+    <br>
+    <br>
+    <br>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -35,16 +38,6 @@
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
                             </div>
                         </div>
 
