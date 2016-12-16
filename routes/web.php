@@ -20,6 +20,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth', 'prefix' => 'home'], function () {
 	Route::resource('pegawai', 'PegawaiController');
 	Route::resource('menu', 'MenuController');
+	Route::resource('bahan', 'BahanController');
 
 	Route::get('/', function () {
     	return view('home.index');

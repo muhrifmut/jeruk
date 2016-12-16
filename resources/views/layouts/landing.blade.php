@@ -29,10 +29,10 @@
             <nav>
                 <ul>
                     <li><a href="/">Beranda</a></li>
-                    @if(Auth::user())
-                        <li><a href="/home">Home</a></li>
-                    @endif
                     <li><a href="/#menu">Menu</a></li>
+                    @if(Auth::user())
+                        <li><a href="/home">Dashboard</a></li>
+                    @endif
                     @if(Auth::user())
                         <li>
                             <a href="{{ url('/logout') }}" onclick="event.preventDefault();
@@ -49,6 +49,7 @@
             </nav>
         </div>
     </header><!--  end header  -->
+
     @yield('content')
 
     <footer>

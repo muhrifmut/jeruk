@@ -34,7 +34,8 @@ $factory->define(App\Menu::class, function (Faker\Generator $faker) {
 $factory->define(App\Bahan::class, function (Faker\Generator $faker) {
     return [
 			'nama' => $faker->name(),
-		    'stock' => $faker->numberBetween($min = 1, $max = 100),
+			'stock' => $faker->numberBetween($min = 1, $max = 100),
+		    'satuan' => $faker->bothify('##??'),
 		    'tgl_kadaluarsa' => $faker->date(),
     ];
 });

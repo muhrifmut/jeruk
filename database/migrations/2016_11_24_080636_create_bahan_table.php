@@ -17,6 +17,7 @@ class CreateBahanTable extends Migration
             $table->increments('id');
             $table->string('nama');
             $table->integer('stock');
+            $table->string('satuan');
             $table->date('tgl_kadaluarsa');
             $table->timestamps();
         });

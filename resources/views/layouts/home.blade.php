@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>HOME - {{ Auth::user()->name }}</title>
+  <title>Dashboard - {{ Auth::user()->name }}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -46,9 +46,9 @@
     <!-- Logo -->
     <a href="{{ URL::to('/home') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>H</b></span>
+      <span class="logo-mini"><b>D</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>HOME</b></span>
+      <span class="logo-lg"><b>Dashboard</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -112,8 +112,45 @@
                   </a>
                   <ul class="treeview-menu">
                     <li><a href="{{ route('menu.index') }}">Data Menu</a></li>
-                    <li><a href="#">Tambah Data Pegawai</a></li>
+                    <li><a href="#">Tambah Data Menu</a></li>
                     <li><a href="#">Data Menu Baru</a></li>
+                  </ul>
+              </li>
+              <li calss="treeview">
+                  <a href="#">
+                      <i class="glyphicon glyphicon-inbox"></i> <span>Bahan</span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="{{ route('bahan.index') }}">Data Bahan</a></li>
+                    <li><a href="{{ route('bahan.create') }}">Tambah Data Bahan</a></li>
+                  </ul>
+              </li>
+              <li><a href="#"><span>Meja</span></a></li>
+              <li calss="treeview">
+                  <a href="#">
+                      <span>Pesanan</span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="#">Data</a></li>
+                    <li><a href="#">Tambah Data</a></li>
+                  </ul>
+              </li>
+              <li calss="treeview">
+                  <a href="#">
+                      <span>Pembayaran</span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="#">Data</a></li>
+                    <li><a href="#">Tambah Data</a></li>
+                  </ul>
+              </li>
+              <li calss="treeview">
+                  <a href="#">
+                      <span>Kuisioner</span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="#">Data</a></li>
+                    <li><a href="#">Tambah Data</a></li>
                   </ul>
               </li>
             @endif

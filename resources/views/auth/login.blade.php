@@ -1,6 +1,7 @@
 @extends('layouts.landing')
 
 @section('content')
+<div class="col-md-12" style="border-top: 1px #999999 solid"></div>
 <div class="container" style="border-top: 1px #999999 solid">
     <br>
     <br>
