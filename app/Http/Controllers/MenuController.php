@@ -16,7 +16,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menu = Menu::all();
+        $menu = Menu::all()->where('verifikasi', '=', 1);
         $bahanmenu = BahanMenu::all();
 
         return view('menu.index', compact('menu', 'bahanmenu'));

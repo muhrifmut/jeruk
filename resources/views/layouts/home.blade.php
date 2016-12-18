@@ -116,7 +116,7 @@
                   <ul class="treeview-menu">
                     <li><a href="{{ route('menu.index') }}">Data Menu</a></li>
                     <li><a href="{{ route('menu.create') }}">Tambah Data Menu</a></li>
-                    <li><a href="#">Data Menu Baru</a></li>
+                    <li><a href="/home/menu/baru">Data Menu Baru</a></li>
                   </ul>
               </li>
               <li calss="treeview">
