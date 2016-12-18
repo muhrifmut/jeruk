@@ -40,7 +40,6 @@
 				        {!! $errors->first('tgl_kadaluarsa', '<p class="help-block">:message</p>') !!}
 			        </div>
 			    </div>
-
 			</div>
 			<div class="box-footer">
 				<div class="form-group">

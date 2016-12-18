@@ -25,7 +25,7 @@
                                 <td>Rp. {{ $m->harga }}</td>
                                 <td>
                                     @foreach ($bahanmenu as $bm)
-                                        <span>{{ $m->id == $bm->menu_id ? $bm->bahan->nama : ""}}</span>
+                                        <p>{{ $m->id == $bm->menu_id ? "- ".$bm->bahan->nama." (".$bm->jumlah_bahan." ".$bm->bahan->satuan.")" : ""}}</p>
                                     @endforeach
                                 </td>
                                 <td>{{ $m->status }}</td>

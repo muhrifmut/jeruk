@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Menu;
 use App\BahanMenu;
+use App\Bahan;
 
 class MenuController extends Controller
 {
@@ -28,7 +29,9 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        $bahan = Bahan::all();
+
+        return view('menu.create', compact('bahan'));
     }
 
     /**
@@ -39,7 +42,31 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'required|regex:/^[\pL\s\-]+$/u|min:2',
+            'harga' => 'required|numeric',
+            'bahan' => 'required',
+            'jumlah_bahan' => 'required|numeric|min:1',
+        ]);
+
+        $menu = Menu::create([
+            'nama' => $request->input('nama'),
+            'harga' => $request->input('harga'),
+            'verifikasi' => 0,
+            'status' => 0,
+        ]);
+
+        $bahan = $request->input('bahan');
+        $jumlah_bahan = $request->input('jumlah_bahan');
+        foreach ($bahan as $key => $value) {
+            $bahanmenu = new Bahanmenu;
+            $bahanmenu->menu()->associate($menu);
+            $bahanmenu->bahan_id = $bahan[$key];
+            $bahanmenu->jumlah_bahan = $jumlah_bahan[$key];
+            $bahanmenu->save();
+        }
+
+        return redirect()->route('menu.index')->with('message', ['type' => 'success', 'text' => 'Data berhasil ditambahkan!']);
     }
 
     /**

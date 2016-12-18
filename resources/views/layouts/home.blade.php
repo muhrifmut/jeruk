@@ -19,8 +19,6 @@
   <link rel="stylesheet" href="{{ URL::asset('dist/css/skins/_all-skins.min.css') }}">
   <!-- iCheck -->
   <link rel="stylesheet" href="{{ URL::asset('plugins/iCheck/flat/blue.css') }}">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href="{{ URL::asset('plugins/morris/morris.css') }}">
   <!-- jvectormap -->
   <link rel="stylesheet" href="{{ URL::asset('plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}">
   <!-- Date Picker -->
@@ -31,6 +29,11 @@
   <link rel="stylesheet" href="{{ URL::asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 
   <link rel="shortcut icon" href="{{{ asset('img/resto.png') }}}">
+  <style type="text/css">
+    .my-group .form-control{
+      width:50%;
+    }
+  </style>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -112,7 +115,7 @@
                   </a>
                   <ul class="treeview-menu">
                     <li><a href="{{ route('menu.index') }}">Data Menu</a></li>
-                    <li><a href="#">Tambah Data Menu</a></li>
+                    <li><a href="{{ route('menu.create') }}">Tambah Data Menu</a></li>
                     <li><a href="#">Data Menu Baru</a></li>
                   </ul>
               </li>
@@ -186,9 +189,6 @@
 </script>
 <!-- Bootstrap 3.3.6 -->
 <script src="{{ URL::asset('bootstrap/js/bootstrap.min.js') }}"></script>
-<!-- Morris.js charts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="{{ URL::asset('plugins/morris/morris.min.js') }}"></script>
 <!-- Sparkline -->
 <script src="{{ URL::asset('plugins/sparkline/jquery.sparkline.min.js') }}"></script>
 <!-- jvectormap -->
@@ -209,10 +209,6 @@
 <script src="{{ URL::asset('plugins/fastclick/fastclick.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ URL::asset('dist/js/app.min.js') }}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ URL::asset('dist/js/pages/dashboard.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ URL::asset('dist/js/demo.js') }}"></script>
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>
 	tinymce.init({ 
@@ -233,6 +229,21 @@
 		'//www.tinymce.com/css/codepen.min.css'
 		]
 	});
+</script>
+<script type="text/javascript">
+  $(function(){
+      $('#add').on('click', function() {
+        var bahanterakhir = $('.tambahbahan').last();
+        var tambahbahan = bahanterakhir.clone();
+        tambahbahan.find('.remove')
+          .attr('onclick', '$(this).parent().parent().parent().remove()')
+          .attr('id', '')
+          .html('<i class="glyphicon glyphicon-minus"></i>');
+        tambahbahan.find('.label-bahan').text('');
+        tambahbahan.find('.jumlah-bahan').val('');
+        bahanterakhir.after(tambahbahan);
+      });
+  });
 </script>
 </body>
 </html>
