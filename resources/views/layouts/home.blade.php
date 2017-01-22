@@ -28,6 +28,7 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{ URL::asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 
+  <link rel="stylesheet" href="{{ URL::asset('plugins/datatables/jquery.dataTables.css') }}">
   <link rel="shortcut icon" href="{{{ asset('img/resto.png') }}}">
   <style type="text/css">
     .my-group .form-control{
@@ -62,9 +63,6 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-                            <li>
-                              <a href="/"><i class="glyphicon glyphicon-home"></i> <span> Beranda</span></a>
-                            </li>
                             <li>
                               <a href="#"><i class="glyphicon glyphicon-user"></i> <span> {{ Auth::user()->name }}</span></a>
                             </li>
@@ -116,7 +114,7 @@
                   <ul class="treeview-menu">
                     <li><a href="{{ route('menu.index') }}">Data Menu</a></li>
                     <li><a href="{{ route('menu.create') }}">Tambah Data Menu</a></li>
-                    <li><a href="/home/menu/baru">Data Menu Baru</a></li>
+                    <li><a href="/home/menubaru">Data Menu Baru</a></li>
                   </ul>
               </li>
               <li calss="treeview">
@@ -128,7 +126,11 @@
                     <li><a href="{{ route('bahan.create') }}">Tambah Data Bahan</a></li>
                   </ul>
               </li>
-              <li><a href="#"><span>Meja</span></a></li>
+              <li calss="treeview">
+                  <a href="{{ route('meja.index') }}">
+                      <i class="glyphicon glyphicon-th"></i> <span>Meja</span>
+                  </a>
+              </li>
               <li calss="treeview">
                   <a href="#">
                       <span>Pesanan</span>
@@ -210,6 +212,7 @@
 <!-- AdminLTE App -->
 <script src="{{ URL::asset('dist/js/app.min.js') }}"></script>
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script src="{{ URL::asset('plugins/datatables/jquery.dataTables.js') }}"></script>
 <script>
 	tinymce.init({ 
 		selector:'.wysiwyg',
@@ -243,6 +246,11 @@
         tambahbahan.find('.jumlah-bahan').val('');
         bahanterakhir.after(tambahbahan);
       });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#table').DataTable();
   });
 </script>
 </body>

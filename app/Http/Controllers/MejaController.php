@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Meja;
 
 class MejaController extends Controller
 {
@@ -13,7 +14,9 @@ class MejaController extends Controller
      */
     public function index()
     {
-        //
+        $meja = Meja::paginate(15);
+
+        return view('meja.index', compact('meja'));
     }
 
     /**

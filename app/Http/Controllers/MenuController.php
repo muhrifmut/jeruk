@@ -46,7 +46,7 @@ class MenuController extends Controller
             'nama' => 'required|regex:/^[\pL\s\-]+$/u|min:2',
             'harga' => 'required|numeric',
             'bahan' => 'required',
-            'jumlah_bahan' => 'required|numeric|min:1',
+            'jumlah_bahan' => 'required',
         ]);
 
         $menu = Menu::create([
@@ -111,6 +111,10 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $menu = Menu::find($id);
+        $menu->delete();
+        Bahan::where('id', $menu->id )->delete();
+
+        return redirect()->route('menu.index')->with('message', ['type' => 'danger', 'text' => 'Data telah dihapus!']);
     }
 }

@@ -2,93 +2,42 @@
 <html lang="en">
 <head>
     <title>Resto</title>
-    <meta charset="utf-8">
-    <meta name="author" content="pixelhint.com">
-    <meta name="description" content="Resto HTML5/CSS3 Restaurant Home Page website Template"/>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/reset.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/main.css') }}">
-    <link rel="shortcut icon" href="{{{ asset('img/resto.png') }}}">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/carouFredSel.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/easing.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link href="{{ URL::asset('/css/app.css') }}" rel="stylesheet">
+    <!-- Styles -->
+    <link href="/css/app.css" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script>
+        window.Laravel = <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
 </head>
 <body>
-
-    <!--  start header  -->
-    <header>
-        <div class="wrapper">
-            <div class="logo">
-                <a href="/"><img src="img/logo.png" alt="Resto" title=""/></a>
+    <div id="app">
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- Branding Image -->
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        Resto
+                    </a>
+                </div>
             </div>
+        </nav>
 
-            <nav>
-                <ul>
-                    <li><a href="/">Beranda</a></li>
-                    <li><a href="/#menu">Menu</a></li>
-                    @if(Auth::user())
-                        <li><a href="/home">Dashboard</a></li>
-                    @endif
-                    @if(Auth::user())
-                        <li>
-                            <a href="{{ url('/logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">Logout</span>
-                            </a>
-                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
-                    @else
-                        <li><a href="/login">Login</a></li>
-                    @endif
-                </ul>
-            </nav>
-        </div>
-    </header><!--  end header  -->
+        @yield('content')
+    </div>
 
-    @yield('content')
-
-    <footer>
-        <div class="wrapper">
-            <!-- adresse1  -->
-            <section class="adress">
-                <p>New York Restaurant</p> 
-                <p class="location">3926 Anmoore Road<br/>
-                New York, NY 10014</p>
-                <p class="phone">718-749-1714</p>
-            </section>
-
-            <!--  adress2  -->
-            <section class="adress">
-                <p>France Restaurant</p>
-                <p class="location">68, rue  de la Couronne<br/>
-                75002 PARIS </p>
-                <p class="phone">02.94.23.69.56</p>
-            </section>
-
-            <!--  footer navigation  -->
-            <section class="footer_nav">
-                <nav>
-                    <ul>
-                        <li><a href="">Blog</a></li>
-                        <li><a href="">Careers</a></li>
-                        <li><a href="">Privacy Policy</a></li>
-                        <li><a href="">Contact</a></li>
-                    </ul>
-                </nav>
-            </section>
-
-            <!--  footer copyrights  -->
-            <section class="copyrights">
-                <img src="img/footer_logo.png" class="footer_logo" alt="" title="">
-                <p>© All Rights Reserved 2014.</p>
-                <p>Find  More at <a href="http://pixelhint.com" target="_blank">Pixelhint.com</a></p>   
-            </section>
-        </div>
-    </footer><!--  end footer  -->
+    <!-- Scripts -->
+    <script src="/js/app.js"></script>
 </body>
 </html>

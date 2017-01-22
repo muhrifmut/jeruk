@@ -29,10 +29,10 @@
 				        <div class="input-group my-group">
 				            <select name="bahan[]" class="form-control">
 				            @foreach($bahan as $b)
-				                <option value="{{ $b->id }}">{{ $b->nama }}</option>
+				                <option value="{{ $b->id }}">{{ $b->nama }} ({{ $b->satuan }})</option>
 				            @endforeach
 				            </select> 
-				            <input type="text" class="form-control jumlah-bahan" name="jumlah_bahan[]" style="width: 15%" />
+				            <input type="text" class="form-control jumlah-bahan" name="jumlah_bahan[]" style="width: 15%" placeholder="jml" />
 				            <button type="button" id="add" class="btn btn-default remove"><i class="glyphicon glyphicon-plus"></i></button>
 				        </div>
 				        {!! $errors->first('bahan', '<p class="help-block">:message</p>') !!}
