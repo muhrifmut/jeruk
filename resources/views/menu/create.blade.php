@@ -42,7 +42,7 @@
 				<div class="box-footer">
 					<div class="form-group">
 						<div class="col-md-12">
-							<a href="{{ route('pegawai.index') }}" class="btn btn-primary">Kembali</a>
+							<a href="{{ route('menu.index') }}" class="btn btn-primary">Kembali</a>
 							{!! Form::submit('Simpan', ['class'=>'btn btn-success pull-right']) !!}
 						</div>
 					</div>

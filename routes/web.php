@@ -27,6 +27,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'home'], function () {
 
 	Route::resource('meja', 'MejaController');
 
+	Route::resource('pesanan', 'PesananController');
+
 	Route::get('/', function () {
     	return view('home.index');
 	});

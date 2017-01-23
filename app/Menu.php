@@ -14,4 +14,9 @@ class Menu extends Model
     {
         return $this->hasOne(BahanMenu::class);
     }
+
+    public function pesanan()
+    {
+        return $this->hasOne(Pesanan::class);
+    }
 }

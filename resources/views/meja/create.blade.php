@@ -45,7 +45,7 @@
 			<div class="box-footer">
 				<div class="form-group">
 					<div class="col-md-12">
-						<a href="{{ route('bahan.index') }}" class="btn btn-primary">Kembali</a>
+						<a href="{{ route('meja.index') }}" class="btn btn-primary">Kembali</a>
 						{!! Form::submit('Simpan', ['class'=>'btn btn-success pull-right']) !!}
 					</div>
 				</div>

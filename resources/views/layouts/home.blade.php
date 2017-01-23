@@ -133,11 +133,11 @@
               </li>
               <li calss="treeview">
                   <a href="#">
-                      <span>Pesanan</span>
+                      <i class="glyphicon glyphicon-pencil"></i> <span>Pesanan</span>
                   </a>
                   <ul class="treeview-menu">
-                    <li><a href="#">Data</a></li>
-                    <li><a href="#">Tambah Data</a></li>
+                    <li><a href="{{ route('pesanan.index') }}">Data Pesanan</a></li>
+                    <li><a href="{{ route('pesanan.create') }}">Tambah Data Pesanan</a></li>
                   </ul>
               </li>
               <li calss="treeview">
@@ -233,6 +233,8 @@
 		]
 	});
 </script>
+
+<!-- Bahan (Menu) -->
 <script type="text/javascript">
   $(function(){
       $('#add').on('click', function() {
@@ -248,6 +250,25 @@
       });
   });
 </script>
+
+<!-- Menu (Pemesanan) -->
+<script type="text/javascript">
+  $(function(){
+      $('#addmenu').on('click', function() {
+        var menuterakhir = $('.menu').last();
+        var menu = menuterakhir.clone();
+        menu.find('.removemenu')
+          .attr('onclick', '$(this).parent().parent().parent().remove()')
+          .attr('id', '')
+          .html('<i class="glyphicon glyphicon-minus"></i>');
+        menu.find('.label-menu').text('');
+        menu.find('.jumlah-menu').val('');
+        menuterakhir.after(menu);
+      });
+  });
+</script>
+
+<!-- Datatable -->
 <script type="text/javascript">
   $(document).ready(function(){
     $('#table').DataTable();
