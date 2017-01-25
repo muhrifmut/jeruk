@@ -5,21 +5,21 @@
 	<div class="col-lg-12">
 		<div class="box box-primary">
 			<div class="box-header">
-				<h3 class="pull-left">Tambah Menu Baru</h3>
+				<h3 class="pull-left">Tambah Data Pegawai</h3>
 			</div>
-			{!! Form::open(['route' => ['menu.store'], 'method' => 'POST', 'class' => 'form-horizontal']) !!}
+			{!! Form::open([ $menu,'route' => ['menu.update', $menu->id], 'method' => 'PUT', 'class' => 'form-horizontal']) !!}
 			<div class="box-body">
 				<div class="form-group">
 					<label for="nama" class="control-label col-md-2">Nama</label>
 					<div class="col-md-8">
-						{!! Form::text('nama', old('nama', null), ['class'=>'form-control']) !!}
+						{!! Form::text('nama', old('nama', $menu->nama), ['class'=>'form-control']) !!}
 				        {!! $errors->first('nama', '<p class="help-block">:message</p>') !!}
 			        </div>
 			    </div>
 			    <div class="form-group">
 					<label for="harga" class="control-label col-md-2">Harga</label>
 					<div class="col-md-8">
-						{!! Form::text('harga', old('harga', null), ['class'=>'form-control']) !!}
+						{!! Form::text('harga', old('harga', $menu->harga), ['class'=>'form-control']) !!}
 				        {!! $errors->first('harga', '<p class="help-block">:message</p>') !!}
 			        </div>
 			    </div>

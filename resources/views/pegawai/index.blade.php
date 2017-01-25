@@ -5,7 +5,10 @@
         <div class="col-lg-12">
             <div class="box box-primary">
             <div class="box-header">
-                <h3 class="pull-left">Data Menu</h3>
+                <h3 class="pull-left">Daftar Menu</h3>
+                <a href="{{ route('pegawai.create') }}" class="btn btn-success pull-right">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Tambah Pegawai
+                </a>
             </div>
             <div class="box-body">
                 <table class="table" id="table">
@@ -25,11 +28,13 @@
                                 <td>{{ $p->name }}</td>
                                 <td>{{ $p->email }}</td>
                                 <td>{{ $p->status }}</td>
-                                <td style="text-align: right;">
+                                <td>
+                                    <center>
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['pegawai.destroy', $p->id]]) }}
                                         <a href="{{ route('pegawai.edit', $p->id) }}" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
                                         <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><i class="glyphicon glyphicon-trash"></i> Hapus</button>
                                     {{ Form::close() }}
+                                    </center>
                                 </td>
                             </tr>
                         @endforeach

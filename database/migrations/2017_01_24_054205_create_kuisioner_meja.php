@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBahanTable extends Migration
+class CreateKuisionerMeja extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateBahanTable extends Migration
      */
     public function up()
     {
-        Schema::create('bahan', function (Blueprint $table) {
+        Schema::create('kuisioner', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
-            $table->float('stock');
-            $table->string('satuan');
-            $table->date('tgl_kadaluarsa');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateBahanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bahan');
+        Schema::dropIfExists('kuisioner');
     }
 }

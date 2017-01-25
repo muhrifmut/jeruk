@@ -20,14 +20,17 @@ Route::group(['middleware' => 'auth', 'prefix' => 'home'], function () {
 	Route::resource('pegawai', 'PegawaiController');
 
 	Route::resource('menu', 'MenuController');
-
 	Route::get('menubaru', 'PagesController@notverifikasi');
+	#Setujui Menu
+	Route::get('verifikasi/{id}', 'PagesController@verifikasi');
 
 	Route::resource('bahan', 'BahanController');
 
 	Route::resource('meja', 'MejaController');
 
 	Route::resource('pesanan', 'PesananController');
+
+	Route::resource('pembayaran', 'PembayaranController');
 
 	Route::get('/', function () {
     	return view('home.index');

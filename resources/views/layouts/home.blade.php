@@ -70,7 +70,7 @@
                                 <a href="{{ url('/logout') }}"
                                     onclick="event.preventDefault();
                                       document.getElementById('logout-form').submit();">
-                                        <i class="glyphicon glyphicon-log-out"></i> <span>Logout</span>
+                                        <i class="glyphicon glyphicon-log-out"></i> <span>Keluar</span>
                                 </a>
                                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
@@ -99,32 +99,23 @@
             <li class="header">MAIN NAVIGATION</li>
             @if (Auth::user()->status == 'admin')
 	            <li calss="treeview">
-	                <a href="#">
+	                <a href="{{ route('pegawai.index') }}">
 	                    <i class="glyphicon glyphicon-user"></i> <span>Pegawai</span>
 	                </a>
-                  <ul class="treeview-menu">
-                    <li><a href="{{ route('pegawai.index') }}">Data Pegawai</a></li>
-                    <li><a href="{{ route('pegawai.create') }}">Tambah Data Pegawai</a></li>
-                  </ul>
 	            </li>
               <li calss="treeview">
                   <a href="#">
                       <i class="glyphicon glyphicon-list-alt"></i> <span>Menu</span>
                   </a>
                   <ul class="treeview-menu">
-                    <li><a href="{{ route('menu.index') }}">Data Menu</a></li>
-                    <li><a href="{{ route('menu.create') }}">Tambah Data Menu</a></li>
-                    <li><a href="/home/menubaru">Data Menu Baru</a></li>
+                    <li><a href="{{ route('menu.index') }}">Daftar Menu</a></li>
+                    <li><a href="/home/menubaru">Daftar Menu Baru</a></li>
                   </ul>
               </li>
               <li calss="treeview">
-                  <a href="#">
+                  <a href="{{ route('bahan.index') }}">
                       <i class="glyphicon glyphicon-inbox"></i> <span>Bahan</span>
                   </a>
-                  <ul class="treeview-menu">
-                    <li><a href="{{ route('bahan.index') }}">Data Bahan</a></li>
-                    <li><a href="{{ route('bahan.create') }}">Tambah Data Bahan</a></li>
-                  </ul>
               </li>
               <li calss="treeview">
                   <a href="{{ route('meja.index') }}">
@@ -132,22 +123,14 @@
                   </a>
               </li>
               <li calss="treeview">
-                  <a href="#">
+                  <a href="{{ route('pesanan.index') }}">
                       <i class="glyphicon glyphicon-pencil"></i> <span>Pesanan</span>
                   </a>
-                  <ul class="treeview-menu">
-                    <li><a href="{{ route('pesanan.index') }}">Data Pesanan</a></li>
-                    <li><a href="{{ route('pesanan.create') }}">Tambah Data Pesanan</a></li>
-                  </ul>
               </li>
               <li calss="treeview">
-                  <a href="#">
-                      <span>Pembayaran</span>
+                  <a href="{{ route('pembayaran.index') }}">
+                      <i class="glyphicon glyphicon-usd"></i> <span>Pembayaran</span>
                   </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#">Data</a></li>
-                    <li><a href="#">Tambah Data</a></li>
-                  </ul>
               </li>
               <li calss="treeview">
                   <a href="#">

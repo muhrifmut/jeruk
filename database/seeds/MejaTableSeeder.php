@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class MenuTableSeeder extends Seeder
+class MejaTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class MenuTableSeeder extends Seeder
      */
     public function run()
     {
-    	factory(App\Menu::class, 20)->create();
+        factory(App\Meja::class, 15)->create();
     }
 }

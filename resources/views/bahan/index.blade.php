@@ -5,7 +5,10 @@
         <div class="col-lg-12">
             <div class="box box-primary">
             <div class="box-header">
-                <h3 class="pull-left">Data Bahan</h3>
+                <h3 class="pull-left">Daftar Bahan</h3>
+                <a href="{{ route('bahan.create') }}" class="btn btn-success pull-right">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Tambah Bahan
+                </a>
             </div>
             <div class="box-body">
                 <table class="table" id="table">
@@ -24,8 +27,15 @@
                             <td>{{ $b->id }}</td>
                             <td>{{ $b->nama }}</td>
                             <td>{{ $b->stock }} {{ $b->satuan }}</td>
-                            <td>{{ $b->tgl_kadaluarsa }}</td>
                             <td>
+                                @if($b->tgl_kadaluarsa <= \Carbon\Carbon::now())
+                                    <center><span class="label label-danger">Kadaluarsa</span></center>
+                                @else
+                                    <center>{{ $b->tgl_kadaluarsa }}</center>
+                                @endif
+                            </td>
+                            <td>
+                                <center>
                                 {{ Form::open(['method' => 'DELETE', 'route' => ['bahan.destroy', $b->id]]) }}
                                     <a href="{{ route('bahan.edit', $b->id) }}" class="btn btn-warning btn-xs">
                                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Ubah
@@ -34,6 +44,7 @@
                                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus
                                     </button>
                                 {!! Form::close() !!}
+                                </center>
                             </td>
                         </tr>
                         @endforeach

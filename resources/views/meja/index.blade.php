@@ -20,12 +20,19 @@
                         @foreach ($meja as $m)
                             <tr>
                                 <td>{{ $m->id }}</td>
-                                <td>{{ $m->status }}</td>
-                                <td style="text-align: right;">
+                                <td>
+                                    @if($m->status == 0)
+                                        Terisi
+                                    @else
+                                        Kosong
+                                    @endif
+                                </td>
+                                <td>
+                                    <center>
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['meja.destroy', $m->id]]) }}
-                                        <a href="{{ route('meja.edit', $m->id) }}" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
                                         <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><i class="glyphicon glyphicon-trash"></i> Hapus</button>
                                     {{ Form::close() }}
+                                    </center>
                                 </td>
                             </tr>
                         @endforeach

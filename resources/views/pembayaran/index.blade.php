@@ -34,7 +34,7 @@
                                     @endforeach
                                 </td>
                                 <td>{{ $ip->status }}</td>
-                                <td>
+                                <td>   
                                     <center>
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['pesanan.destroy', $p->id]]) }}
                                         <a href="{{ route('pesanan.edit', $p->id) }}" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-pencil"></i> Edit</a>

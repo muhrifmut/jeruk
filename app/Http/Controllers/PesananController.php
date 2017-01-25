@@ -17,9 +17,10 @@ class PesananController extends Controller
      */
     public function index()
     {
+        $idp = Pesanan::select('id', 'nama', 'meja_id', 'status')->distinct('id')->get();
         $pesanan = Pesanan::all();
 
-        return view('pesanan.index', compact('pesanan'));
+        return view('pesanan.index', compact('pesanan', 'idp'));
     }
 
     /**
@@ -62,8 +63,20 @@ class PesananController extends Controller
             $pesanan->menu_id = $menu[$key];
             $pesanan->jumlah_menu = $jumlah[$key];
             $pesanan->status = 0;
+            $pesanan->pembayaran = 0;
             $pesanan->save();
+
+            $bahanmenu = \App\BahanMenu::where('menu_id', $menu[$key])->get();
+            foreach ( $bahanmenu as $k => $v) {
+                $bahan = \App\Bahan::where('id', $bahanmenu[$k]->bahan_id)->first();
+                $bahan->update([
+                    'stock' => $bahan->stock - ($bahanmenu[$k]->jumlah_bahan * $jumlah[$key]),
+                ]);
+            }
         }
+
+        $meja = Meja::where('id', $request->input('meja'));
+        $meja->update(['status' => 0]);
 
         return redirect()->route('pesanan.index')->with('message', ['type' => 'success', 'text' => 'Data berhasil ditambahkan!']);
     }
@@ -87,7 +100,11 @@ class PesananController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pesanan = Pesanan::find($id);
+        $menu = Menu::all()->where('status', 1)->where('verifikasi', 1);
+        $meja = Meja::all()->where('status', 1);
+
+        return view('pesanan.edit', compact('pesanan', 'meja', 'menu'));
     }
 
     /**
@@ -99,7 +116,7 @@ class PesananController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //..
     }
 
     /**
@@ -110,6 +127,7 @@ class PesananController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Pesanan::find($id)->delete();
+        return redirect()->route('pesanan.index')->with('message', ['type' => 'danger', 'text' => 'Data telah dihapus!']);
     }
 }

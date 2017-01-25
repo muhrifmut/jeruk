@@ -5,7 +5,7 @@
 	<div class="col-lg-12">
 		<div class="box box-primary">
 			<div class="box-header">
-				<h3 class="pull-left">Tambah Data Bahan</h3>
+				<h3 class="pull-left">Tambah Meja</h3>
 			</div>
 			{!! Form::open(['route' => ['bahan.store'], 'method' => 'POST', 'class' => 'form-horizontal']) !!}
 			<div class="box-body">

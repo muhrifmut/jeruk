@@ -20,6 +20,7 @@ class CreatePesananTable extends Migration
             $table->string('menu_id');
             $table->integer('jumlah_menu');
             $table->integer('status');
+            $table->integer('pembayaran');
             $table->timestamps();
         });
     }

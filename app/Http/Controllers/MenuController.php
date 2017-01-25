@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Menu;
 use App\BahanMenu;
 use App\Bahan;
+use Carbon\Carbon;
 
 class MenuController extends Controller
 {
@@ -58,6 +59,30 @@ class MenuController extends Controller
 
         $bahan = $request->input('bahan');
         $jumlah_bahan = $request->input('jumlah_bahan');
+        $databahan = Bahan::all();
+        foreach ($bahan as $key => $value) {
+            $db = $databahan->where('id', $bahan[$key])->first();
+            if(($db->stock - $jumlah_bahan[$key]) < 0) {
+                $menu->update([
+                    'status' => 0,
+                ]);
+            } else {
+                $menu->update([
+                    'status' => 1,
+                ]); 
+            }
+
+            if($db->tgl_kadaluarsa <= Carbon::now()) {
+                $menu->update([
+                    'status' => 0,
+                ]);
+            } else {
+                $menu->update([
+                    'status' => 1,
+                ]);
+            }
+        }
+
         foreach ($bahan as $key => $value) {
             $bahanmenu = new Bahanmenu;
             $bahanmenu->menu()->associate($menu);
@@ -88,7 +113,11 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $menu = Menu::find($id);
+        $bahanmenu = BahanMenu::all();
+        $bahan = Bahan::all();
+
+        return view('menu.edit', compact('menu', 'bahanmenu', 'bahan'));
     }
 
     /**

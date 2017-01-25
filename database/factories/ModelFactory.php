@@ -22,28 +22,8 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Menu::class, function (Faker\Generator $faker) {
-  	return [
-		'nama' => $faker->name(),
-		'harga' => $faker->numberBetween($min = 10000, $max = 90000),
-		'status' => $faker->numberBetween($min = 0, $max = 1),
-		'verifikasi' => $faker->numberBetween($min = 0, $max = 1),
-	];
-});
-
-$factory->define(App\Bahan::class, function (Faker\Generator $faker) {
-    return [
-			'nama' => $faker->name(),
-			'stock' => $faker->numberBetween($min = 1, $max = 100),
-		    'satuan' => $faker->bothify('##??'),
-		    'tgl_kadaluarsa' => $faker->date(),
-    ];
-});
-
-$factory->define(App\BahanMenu::class, function (Faker\Generator $faker) {
+$factory->define(App\Meja::class, function (Faker\Generator $faker) {
 	return [
-		'menu_id' => $faker->numberBetween($min = 1, $max = 100),
-		'bahan_id' => $faker->numberBetween($min = 1, $max = 100),
-		'jumlah_bahan' => $faker->numberBetween($min = 1, $max = 100),
+		'status' => 1,
 	];
 });
