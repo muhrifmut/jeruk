@@ -47,7 +47,12 @@
 				<div class="box-footer">
 					<div class="form-group">
 						<div class="col-md-12">
-							<a href="{{ route('pesanan.index') }}" class="btn btn-primary">Kembali</a>
+							@if (\Auth::user()->status == 'pelayan')
+								<a href="{{ URL::to('home') }}" class="btn btn-primary">Kembali</a>
+							@endif
+							@if (\Auth::user()->status == 'admin')
+								<a href="{{ route('pesanan.index') }}" class="btn btn-primary">Kembali</a>
+							@endif
 							{!! Form::submit('Simpan', ['class'=>'btn btn-success pull-right']) !!}
 						</div>
 					</div>

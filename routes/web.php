@@ -29,8 +29,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'home'], function () {
 	Route::resource('meja', 'MejaController');
 
 	Route::resource('pesanan', 'PesananController');
+	Route::get('pesanan/buat/{id}', 'PagesController@pesananbuat');
+	Route::get('pesanan/selesai/{id}', 'PagesController@pesananselesai');
 
 	Route::resource('pembayaran', 'PembayaranController');
+
+	Route::resource('kuisioner', 'KuisionerController');
 
 	Route::get('/', function () {
     	return view('home.index');

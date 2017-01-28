@@ -36,14 +36,9 @@
                             </td>
                             <td>
                                 <center>
-                                {{ Form::open(['method' => 'DELETE', 'route' => ['bahan.destroy', $b->id]]) }}
                                     <a href="{{ route('bahan.edit', $b->id) }}" class="btn btn-warning btn-xs">
                                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Ubah
                                     </a>
-                                    <button type="submit" class="btn btn-danger btn-xs">
-                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Hapus
-                                    </button>
-                                {!! Form::close() !!}
                                 </center>
                             </td>
                         </tr>

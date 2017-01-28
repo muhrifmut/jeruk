@@ -33,13 +33,16 @@
                                         <p>{{ $p->menu->nama }} [{{ $p->jumlah_menu }}]</p>
                                     @endforeach
                                 </td>
-                                <td>{{ $ip->status }}</td>
+                                <td>
+                                    @if($ip->pembayaran == 0)
+                                        <center><span class="label label-default">Belum dibayar</span></center>
+                                    @else
+                                        <center><span class="label label-success">Sudah dibayar</span></center>
+                                    @endif
+                                </td>
                                 <td>   
                                     <center>
-                                    {{ Form::open(['method' => 'DELETE', 'route' => ['pesanan.destroy', $p->id]]) }}
-                                        <a href="{{ route('pesanan.edit', $p->id) }}" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-                                        <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><i class="glyphicon glyphicon-trash"></i> Hapus</button>
-                                    {{ Form::close() }}
+                                        <a href="{{ route('pembayaran.edit', $p->id) }}" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Detail</a>
                                     </center>
                                 </td>
                             </tr>

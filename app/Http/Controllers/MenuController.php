@@ -17,8 +17,28 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menu = Menu::all()->where('verifikasi', '=', 1);
+        $menu = Menu::all()->where('verifikasi', 1);
+        $bahan = Bahan::all();
         $bahanmenu = BahanMenu::all();
+
+        foreach ($menu as $k => $v) {
+            $bm = $bahanmenu->where('menu_id', $menu[$k]->id);
+
+            foreach ($bm as $x => $y) {
+                $b = $bahan->where('id', $bm[$x]->bahan_id)->first();
+
+                if( (($b->stock - $bm[$x]->jumlah_bahan) < 0) or ($b->tgl_kadaluarsa <= Carbon::now())) {
+                    $menu[$k]->update([
+                        'status' => 0,
+                    ]);
+                } else {
+                    $menu[$k]->update([
+                        'status' => 1,
+                    ]); 
+                }
+            }
+
+        }
 
         return view('menu.index', compact('menu', 'bahanmenu'));
     }
@@ -62,7 +82,7 @@ class MenuController extends Controller
         $databahan = Bahan::all();
         foreach ($bahan as $key => $value) {
             $db = $databahan->where('id', $bahan[$key])->first();
-            if(($db->stock - $jumlah_bahan[$key]) < 0) {
+            if((($db->stock - $jumlah_bahan[$key])) < 0 or ($db->tgl_kadaluarsa <= Carbon::now())) {
                 $menu->update([
                     'status' => 0,
                 ]);
@@ -70,16 +90,6 @@ class MenuController extends Controller
                 $menu->update([
                     'status' => 1,
                 ]); 
-            }
-
-            if($db->tgl_kadaluarsa <= Carbon::now()) {
-                $menu->update([
-                    'status' => 0,
-                ]);
-            } else {
-                $menu->update([
-                    'status' => 1,
-                ]);
             }
         }
 
@@ -91,7 +101,7 @@ class MenuController extends Controller
             $bahanmenu->save();
         }
 
-        return redirect()->route('menu.index')->with('message', ['type' => 'success', 'text' => 'Data berhasil ditambahkan!']);
+        return redirect()->to('home/menubaru')->with('message', ['type' => 'success', 'text' => 'Data berhasil ditambahkan!']);
     }
 
     /**
@@ -142,8 +152,8 @@ class MenuController extends Controller
     {
         $menu = Menu::find($id);
         $menu->delete();
-        Bahan::where('id', $menu->id )->delete();
+        BahanMenu::where('menu_id', $menu->id )->delete();
 
-        return redirect()->route('menu.index')->with('message', ['type' => 'danger', 'text' => 'Data telah dihapus!']);
+        return redirect()->back()->with('message', ['type' => 'danger', 'text' => 'Data telah dihapus!']);
     }
 }

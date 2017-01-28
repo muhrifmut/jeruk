@@ -5,10 +5,12 @@
         <div class="col-lg-12">
             <div class="box box-primary">
             <div class="box-header">
-                <h3 class="pull-left">Data Menu</h3>
+                <h3 class="pull-left">Daftar Menu</h3>
+                @if (Auth::user()->status <> 'pelayan')
                 <a href="{{ route('menu.create') }}" class="btn btn-success pull-right">
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Tambah Menu
                 </a>
+                @endif
             </div>
             <div class="box-body">
                 <table class="table" id="table">
@@ -19,7 +21,9 @@
                             <td class="col-md-1">Harga</td>
                             <td class="col-md-3">Bahan</td>
                             <td class="col-md-1">Status</td>
-                            <td class="col-md-2"></td>
+                            @if (Auth::user()->status <> 'pelayan')
+                                <td class="col-md-2"></td>
+                            @endif
                     </tr>
                     </thead>
                     <tbody class="table-hover">
@@ -40,14 +44,15 @@
                                         <span class="label label-default">Tidak tersedia</span>
                                     @endif
                                 </td>
+                                @if (Auth::user()->status <> 'pelayan')
                                 <td>
                                     <center>
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['menu.destroy', $m->id]]) }}
-                                        <a href="{{ route('menu.edit', $m->id) }}" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
                                         <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><i class="glyphicon glyphicon-trash"></i> Hapus</button>
                                     {{ Form::close() }}
                                     </center>
                                 </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

@@ -19,4 +19,9 @@ class Pesanan extends Model
     {
         return $this->belongsTo(Meja::class);
     }
+
+    public function transaksi()
+    {
+        return $this->hasOne(Transaksi::class);
+    }
 }

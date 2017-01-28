@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Dashboard - {{ Auth::user()->name }}</title>
+  <title>Beranda - {{ Auth::user()->name }}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -50,9 +50,9 @@
     <!-- Logo -->
     <a href="{{ URL::to('/home') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>D</b></span>
+      <span class="logo-mini"><b>B</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Dashboard</b></span>
+      <span class="logo-lg"><b>Beranda</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -84,17 +84,6 @@
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      {!! Form::open(['route' => ['pegawai.store'], 'method' => 'GET', 'class' => 'sidebar-form']) !!}
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Seacrh...">
-          <span class="input-group-btn">
-            <button type="submit" name="search" id="serach-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-          </span>
-        </div>
-      {!! Form::close() !!}
-
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             @if (Auth::user()->status == 'admin')
@@ -133,13 +122,33 @@
                   </a>
               </li>
               <li calss="treeview">
-                  <a href="#">
-                      <span>Kuisioner</span>
+                  <a href="{{ route('kuisioner.index') }}">
+                      <i class="glyphicon glyphicon-question-sign"></i> <span>Kuisioner</span>
                   </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#">Data</a></li>
-                    <li><a href="#">Tambah Data</a></li>
-                  </ul>
+              </li>
+            @endif
+            @if (Auth::user()->status == 'pelayan')
+              <li calss="treeview">
+                  <a href="{{ route('pesanan.create') }}">
+                      <i class="glyphicon glyphicon-edit"></i> <span>Pesanan Baru</span>
+                  </a>
+              </li>
+              <li calss="treeview">
+                  <a href="{{ route('menu.index') }}">
+                      <i class="glyphicon glyphicon-list-alt"></i> <span>Menu</span>
+                  </a>
+              </li>
+              <li calss="treeview">
+                  <a href="{{ route('pesanan.index') }}">
+                      <i class="glyphicon glyphicon-inbox"></i> <span>Daftar Pesanan</span>
+                  </a>
+              </li>
+            @endif
+            @if (Auth::user()->status == 'koki')
+              <li calss="treeview">
+                  <a href="{{ route('pesanan.index') }}">
+                      <i class="glyphicon glyphicon-inbox"></i> <span>Daftar Pesanan</span>
+                  </a>
               </li>
             @endif
         </ul>

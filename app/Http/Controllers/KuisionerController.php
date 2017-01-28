@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Pesanan;
-use App\Meja;
 
-class PembayaranController extends Controller
+class KuisionerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +13,7 @@ class PembayaranController extends Controller
      */
     public function index()
     {
-        $idp = Pesanan::select('id', 'nama', 'meja_id', 'status', 'pembayaran')->distinct('id')->get();
-        $pesanan = Pesanan::all();
-
-        return view('pembayaran.index', compact('pesanan', 'idp'));
+        //
     }
 
     /**
@@ -61,15 +56,7 @@ class PembayaranController extends Controller
      */
     public function edit($id)
     {
-        $pesanan = Pesanan::find($id);
-        
-        $dataharga = Pesanan::where('id', $id)->select('menu_id', 'jumlah_menu')->get();
-        $total_harga = 0;
-        foreach ($dataharga as $dh) {
-            $total_harga = $total_harga + ($dh->menu->harga * $dh->jumlah_menu);
-        }
-
-        return view('pembayaran.edit', compact('pesanan', 'total_harga'));
+        //
     }
 
     /**
@@ -81,20 +68,7 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        \App\Pesanan::where('id', $id)->update([
-            'pembayaran' => 1,
-        ]);
-
-        \App\Transaksi::create([
-            'pegawai_id' => \Auth::user()->id,
-            'pesanan_id' => $id,
-            'total_harga' => $request->input('total_harga'),
-            'kuisioner' => 0,
-        ]);
-        
-        $pesanan = Pesanan::find($id);
-        Meja::where('id', $pesanan->meja_id)->update(['status' => 1]);
-        return redirect()->route('pesanan.index')->with('message', ['type' => 'success', 'text' => 'Pembayaran berhasil.']);
+        //
     }
 
     /**

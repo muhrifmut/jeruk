@@ -17,7 +17,7 @@ class PesananController extends Controller
      */
     public function index()
     {
-        $idp = Pesanan::select('id', 'nama', 'meja_id', 'status')->distinct('id')->get();
+        $idp = Pesanan::select('id', 'nama', 'meja_id', 'status', 'pembayaran')->distinct('id')->get();
         $pesanan = Pesanan::all();
 
         return view('pesanan.index', compact('pesanan', 'idp'));
@@ -104,6 +104,24 @@ class PesananController extends Controller
         $menu = Menu::all()->where('status', 1)->where('verifikasi', 1);
         $meja = Meja::all()->where('status', 1);
 
+        foreach ($menu as $k => $v) {
+            $bm = $bahanmenu->where('menu_id', $menu[$k]->id);
+
+            foreach ($bm as $x => $y) {
+                $b = $bahan->where('id', $bm[$x]->bahan_id)->first();
+
+                if( (($b->stock - $bm[$x]->jumlah_bahan) < 0) or ($b->tgl_kadaluarsa <= Carbon::now())) {
+                    $menu[$k]->update([
+                        'status' => 0,
+                    ]);
+                } else {
+                    $menu[$k]->update([
+                        'status' => 1,
+                    ]); 
+                }
+            }
+        }
+
         return view('pesanan.edit', compact('pesanan', 'meja', 'menu'));
     }
 
@@ -127,7 +145,9 @@ class PesananController extends Controller
      */
     public function destroy($id)
     {
+        $pesanan = Pesanan::find($id);
+        Meja::where('id', $pesanan->meja_id)->update(['status' => 1]);
         Pesanan::find($id)->delete();
-        return redirect()->route('pesanan.index')->with('message', ['type' => 'danger', 'text' => 'Data telah dihapus!']);
+        return redirect()->route('pesanan.index')->with('message', ['type' => 'danger', 'text' => 'Pesanan telah dibatalkan.']);
     }
 }

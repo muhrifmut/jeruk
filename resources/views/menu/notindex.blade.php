@@ -44,7 +44,6 @@
                                     <center>
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['menu.destroy', $m->id]]) }}
                                         <a href="{{ URL::to('home/verifikasi', $m->id)}}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-ok"></i> Setujui</a>
-                                        <a href="{{ route('menu.edit', $m->id) }}" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
                                         <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><i class="glyphicon glyphicon-trash"></i> Hapus</button>
                                     {{ Form::close() }}
                                     </center>
