@@ -16,8 +16,6 @@ class CreateBahanTable extends Migration
         Schema::create('bahan', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
-            $table->float('stock');
-            $table->string('satuan');
             $table->date('tgl_kadaluarsa');
             $table->timestamps();
         });

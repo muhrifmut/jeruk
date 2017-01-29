@@ -17,22 +17,6 @@
 			        </div>
 			    </div>
 
-			    <div class="form-group">
-					<label for="stock" class="control-label col-md-2">Jumlah</label>
-					<div class="col-md-8">
-						{!! Form::text('stock', old('stock', $bahan->stock ), ['class'=>'form-control']) !!}
-				        {!! $errors->first('stock', '<p class="help-block">:message</p>') !!}
-				    </div>
-				</div>
-
-				<div class="form-group">
-					<label for="satuan" class="control-label col-md-2">Satuan</label>
-					<div class="col-md-8">
-						{!! Form::text('satuan', old('satuan', $bahan->satuan ), ['class'=>'form-control']) !!}
-				        {!! $errors->first('satuan', '<p class="help-block">:message</p>') !!}
-				    </div>
-				</div>
-
 				<div class="form-group">
 					<label for="tgl_kadaluarsa" class="control-label col-md-2">Tanggal Kadaluarsa</label>
 					<div class="col-md-8">

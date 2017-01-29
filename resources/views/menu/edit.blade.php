@@ -12,31 +12,30 @@
 				<div class="form-group">
 					<label for="nama" class="control-label col-md-2">Nama</label>
 					<div class="col-md-8">
-						{!! Form::text('nama', old('nama', $menu->nama), ['class'=>'form-control']) !!}
+						{!! Form::text('nama', old('nama', $menu->nama), ['class'=>'form-control', 'disabled']) !!}
 				        {!! $errors->first('nama', '<p class="help-block">:message</p>') !!}
 			        </div>
 			    </div>
 			    <div class="form-group">
 					<label for="harga" class="control-label col-md-2">Harga</label>
 					<div class="col-md-8">
-						{!! Form::text('harga', old('harga', $menu->harga), ['class'=>'form-control']) !!}
+						{!! Form::text('harga', old('harga', $menu->harga), ['class'=>'form-control', 'disabled']) !!}
 				        {!! $errors->first('harga', '<p class="help-block">:message</p>') !!}
+			        </div>
+			    </div>
+			    <div class="form-group">
+					<label for="jumlah_menu" class="control-label col-md-2">Jumlah Menu</label>
+					<div class="col-md-8">
+						{!! Form::number('jumlah_menu', old('jumlah_menu', $menu->jumlah), ['class'=>'form-control']) !!}
+				        {!! $errors->first('jumlah_menu', '<p class="help-block">:message</p>') !!}
 			        </div>
 			    </div>
 				<div class="form-group tambahbahan">
 				    <label class="control-label col-md-2 label-bahan">Bahan</label>
 					<div class="col-md-8">
-				        <div class="input-group my-group">
-				            <select name="bahan[]" class="form-control">
-				            @foreach($bahan as $b)
-				                <option value="{{ $b->id }}">{{ $b->nama }} ({{ $b->satuan }})</option>
-				            @endforeach
-				            </select> 
-				            <input type="text" class="form-control jumlah-bahan" name="jumlah_bahan[]" style="width: 15%" placeholder="jml" />
-				            <button type="button" id="add" class="btn btn-default remove"><i class="glyphicon glyphicon-plus"></i></button>
-				        </div>
-				        {!! $errors->first('bahan', '<p class="help-block">:message</p>') !!}
-				        {!! $errors->first('jumlah_bahan', '<p class="help-block">:message</p>') !!}
+				        @foreach ($bahanmenu->where('menu_id', $menu->id) as $bm)
+                            <p>{{ $menu->id == $bm->menu_id ? $bm->bahan : ""}}</p>
+                        @endforeach
 				    </div>
 				</div>
 				<div class="box-footer">

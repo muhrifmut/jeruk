@@ -21,7 +21,7 @@ class MenuController extends Controller
         $bahan = Bahan::all();
         $bahanmenu = BahanMenu::all();
 
-        foreach ($menu as $k => $v) {
+        /*foreach ($menu as $k => $v) {
             $bm = $bahanmenu->where('menu_id', $menu[$k]->id);
 
             foreach ($bm as $x => $y) {
@@ -38,8 +38,19 @@ class MenuController extends Controller
                 }
             }
 
-        }
+        }*/
 
+        foreach ($menu as $key => $value) {
+            if($menu[$key]->jumlah < 1) {
+                $menu[$key]->update([
+                    'status' => 0,
+                ]);
+            } else {
+                $menu[$key]->update([
+                    'status' => 1,
+                ]);
+            }
+        }
         return view('menu.index', compact('menu', 'bahanmenu'));
     }
 
@@ -67,6 +78,7 @@ class MenuController extends Controller
             'nama' => 'required|regex:/^[\pL\s\-]+$/u|min:2',
             'harga' => 'required|numeric',
             'bahan' => 'required',
+            'satuan' => 'required',
             'jumlah_bahan' => 'required',
         ]);
 
@@ -75,28 +87,17 @@ class MenuController extends Controller
             'harga' => $request->input('harga'),
             'verifikasi' => 0,
             'status' => 0,
+            'jumlah' => 0,
         ]);
 
         $bahan = $request->input('bahan');
+        $satuan = $request->input('satuan');
         $jumlah_bahan = $request->input('jumlah_bahan');
-        $databahan = Bahan::all();
-        foreach ($bahan as $key => $value) {
-            $db = $databahan->where('id', $bahan[$key])->first();
-            if((($db->stock - $jumlah_bahan[$key])) < 0 or ($db->tgl_kadaluarsa <= Carbon::now())) {
-                $menu->update([
-                    'status' => 0,
-                ]);
-            } else {
-                $menu->update([
-                    'status' => 1,
-                ]); 
-            }
-        }
 
         foreach ($bahan as $key => $value) {
             $bahanmenu = new Bahanmenu;
             $bahanmenu->menu()->associate($menu);
-            $bahanmenu->bahan_id = $bahan[$key];
+            $bahanmenu->bahan = $bahan[$key]." ".$jumlah_bahan[$key]." ".$satuan[$key];
             $bahanmenu->jumlah_bahan = $jumlah_bahan[$key];
             $bahanmenu->save();
         }
@@ -139,7 +140,13 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $menu = Menu::find($id);
+
+        $menu->update([
+            'jumlah' => $request->input('jumlah_menu'),
+        ]);
+
+        return redirect()->back()->with('message', ['type' => 'danger', 'text' => 'Data telah diubah!']);
     }
 
     /**

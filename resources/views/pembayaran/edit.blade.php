@@ -48,6 +48,9 @@
 							@if (\Auth::user()->status == 'pelayan')
 								<a href="{{ route('pesanan.index') }}" class="btn btn-primary">Kembali</a>
 							@endif
+							@if (\Auth::user()->status == 'kasir')
+								<a href="{{ route('pesanan.index') }}" class="btn btn-primary">Kembali</a>
+							@endif
 							@if (\Auth::user()->status == 'admin')
 								<a href="{{ route('pembayaran.index') }}" class="btn btn-primary">Kembali</a>
 							@endif

@@ -65,7 +65,7 @@
                                         @endif
                                     @endif
 
-                                    @if(Auth::user()->status == 'pelayan')
+                                    @if(Auth::user()->status == 'pelayan' or 'kasir')
                                         {{ Form::open(['method' => 'DELETE', 'route' => ['pesanan.destroy', $p->id]]) }}
                                             @if($ip->pembayaran == 0)
                                                 <a href="{{ route('pembayaran.edit', $p->id) }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-ok"></i> Bayar</a>

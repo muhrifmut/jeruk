@@ -17,6 +17,7 @@ class CreateMenuTable extends Migration
             $table->increments('id');
             $table->string('nama');
             $table->integer('harga');
+            $table->integer('jumlah');
             $table->string('status');
             $table->string('verifikasi');
             $table->timestamps();

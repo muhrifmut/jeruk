@@ -39,15 +39,11 @@ class BahanController extends Controller
     {
         $this->validate($request, [
             'nama' => 'required|regex:/^[\pL\s\-]+$/u|min:2',
-            'stock' => 'required|numeric',
-            'satuan' => 'required|alpha',
             'tgl_kadaluarsa' => 'required|date',
         ]);
 
         \App\Bahan::create([
             'nama' => $request->input('nama'),
-            'stock' => $request->input('stock'),
-            'satuan' => $request->input('satuan'),
             'tgl_kadaluarsa' => $request->input('tgl_kadaluarsa'),
         ]);
 

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Transaksi;
+use App\Kuisioner;
+use App\Pertanyaan;
 
 class KuisionerController extends Controller
 {
@@ -13,7 +16,9 @@ class KuisionerController extends Controller
      */
     public function index()
     {
-        //
+        $kuisioner = Kuisioner::paginate(15);
+
+        return view('kuisioner.index', compact('kuisioner'));
     }
 
     /**
@@ -23,7 +28,9 @@ class KuisionerController extends Controller
      */
     public function create()
     {
-        //
+        $transaksi = Transaksi::all();
+
+        return view('kuisioner.create', compact('transaksi'));
     }
 
     /**
@@ -34,7 +41,29 @@ class KuisionerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'required|regex:/^[\pL\s\-]+$/u|min:2',
+            'transaksi' => 'numeric',
+            'usia' => 'required',
+            'kritikatausaran' => 'required',
+        ]);
+
+        $kuisioner = Kuisioner::create([
+            'nama' => $request->input('nama'),
+            'umur' => $request->input('usia'),
+            'transaksi_id' => 1,
+            'kritikatausaran' => $request->input('kritikatausaran'),
+        ]);
+
+        
+        for ($i=0; $i = 8; $i++) {
+            $pertanyaan = new Pertanyaan;
+            $pertanyaan->kuisioner()->associate($kuisioner); 
+            $pertanyaan->pertanyaan = $i;
+            $pertanyaan->jawaban = $request->input('jawaban'.$i);
+            $pertanyaan->save();
+            $i = $i + 1;
+        }
     }
 
     /**
@@ -45,7 +74,10 @@ class KuisionerController extends Controller
      */
     public function show($id)
     {
-        //
+        $kuisioner = Kuisioner::find($id);
+        $pertanyaan = Pertanyaan::where('kuisioner_id', $id)->get();
+
+        return view('kuisioner.show', compact('kuisioner', 'pertanyaan'));
     }
 
     /**

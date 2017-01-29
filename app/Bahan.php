@@ -8,7 +8,7 @@ class Bahan extends Model
 {
     public $table = "bahan";
 
-    protected $fillable = ['nama', 'stock', 'tgl_kadaluarsa', 'satuan'];
+    protected $fillable = ['nama', 'tgl_kadaluarsa'];
 
     public function bahanmenu()
     {

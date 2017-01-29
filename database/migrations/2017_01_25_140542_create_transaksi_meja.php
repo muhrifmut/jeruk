@@ -18,7 +18,6 @@ class CreateTransaksiMeja extends Migration
             $table->integer('pegawai_id');
             $table->integer('pesanan_id');
             $table->integer('total_harga');
-            $table->integer('kuisioner');
             $table->timestamps();
         });
     }

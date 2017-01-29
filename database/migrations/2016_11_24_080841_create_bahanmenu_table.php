@@ -16,7 +16,7 @@ class CreateBahanmenuTable extends Migration
         Schema::create('bahanmenu', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('menu_id');
-            $table->integer('bahan_id');
+            $table->string('bahan');
             $table->float('jumlah_bahan');
             $table->timestamps();
         });

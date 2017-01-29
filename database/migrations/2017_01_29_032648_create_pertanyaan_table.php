@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKuisionerMeja extends Migration
+class CreatePertanyaanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateKuisionerMeja extends Migration
      */
     public function up()
     {
-        Schema::create('kuisioner', function (Blueprint $table) {
+        Schema::create('pertanyaan', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('transaksi_id');
-            $table->string('nama');
-            $table->integer('umur');
-            $table->string('kritikatausaran');
+            $table->integer('kuisioner_id');
+            $table->string('pertanyaan');
+            $table->string('jawaban');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateKuisionerMeja extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kuisioner');
+        Schema::dropIfExists('pertanyaan');
     }
 }

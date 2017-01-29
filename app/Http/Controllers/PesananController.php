@@ -30,8 +30,19 @@ class PesananController extends Controller
      */
     public function create()
     {
-        $menu = Menu::all()->where('status', 1)->where('verifikasi', 1);
-
+        $m = Menu::all()->where('status', 1)->where('verifikasi', 1);
+        $menu = $m->where('jumlah', '>', 0);
+        foreach ($menu as $key => $value) {
+            if($menu[$key]->jumlah < 1) {
+                $menu[$key]->update([
+                    'status' => 0,
+                ]);
+            } else {
+                $menu[$key]->update([
+                    'status' => 1,
+                ]);
+            }
+        }
         $meja = Meja::all()->where('status', 1);
 
         return view('pesanan.create', compact('menu', 'meja'));
@@ -56,29 +67,38 @@ class PesananController extends Controller
         $menu = $request->input('menu');
         $jumlah = $request->input('jumlah_menu');
         foreach ($menu as $key => $value) {
-            $pesanan = new Pesanan;
-            $pesanan->id = $id;
-            $pesanan->nama = $request->input('nama');
-            $pesanan->meja_id = $request->input('meja');
-            $pesanan->menu_id = $menu[$key];
-            $pesanan->jumlah_menu = $jumlah[$key];
-            $pesanan->status = 0;
-            $pesanan->pembayaran = 0;
-            $pesanan->save();
+            $datamenu = \App\Menu::where('id', $menu[$key])->first();
+            if ($datamenu->jumlah < $jumlah[$key]) {
+                return redirect()->route('pesanan.index')->with('message', ['type' => 'danger', 'text' => 'Pemesanan gagal.']);
+            } else {
+                $pesanan = new Pesanan;
+                $pesanan->id = $id;
+                $pesanan->nama = $request->input('nama');
+                $pesanan->meja_id = $request->input('meja');
+                $pesanan->menu_id = $menu[$key];
+                $pesanan->jumlah_menu = $jumlah[$key];
+                $pesanan->status = 0;
+                $pesanan->pembayaran = 0;
+                $pesanan->save();
 
-            $bahanmenu = \App\BahanMenu::where('menu_id', $menu[$key])->get();
-            foreach ( $bahanmenu as $k => $v) {
-                $bahan = \App\Bahan::where('id', $bahanmenu[$k]->bahan_id)->first();
-                $bahan->update([
-                    'stock' => $bahan->stock - ($bahanmenu[$k]->jumlah_bahan * $jumlah[$key]),
+                $datamenu->update([
+                    'jumlah' => $datamenu->jumlah - $jumlah[$key],
                 ]);
+
+                $bahanmenu = \App\BahanMenu::where('menu_id', $menu[$key])->get();
+                foreach ( $bahanmenu as $k => $v) {
+                    $bahan = \App\Bahan::where('id', $bahanmenu[$k]->bahan_id)->first();
+                    $bahan->update([
+                        'stock' => $bahan->stock - ($bahanmenu[$k]->jumlah_bahan * $jumlah[$key]),
+                    ]);
+                }
+                $meja = Meja::where('id', $request->input('meja'));
+                $meja->update(['status' => 0]);
+                return redirect()->route('pesanan.index')->with('message', ['type' => 'success', 'text' => 'Pemesanan berhasil.']);
             }
         }
 
-        $meja = Meja::where('id', $request->input('meja'));
-        $meja->update(['status' => 0]);
-
-        return redirect()->route('pesanan.index')->with('message', ['type' => 'success', 'text' => 'Data berhasil ditambahkan!']);
+        
     }
 
     /**

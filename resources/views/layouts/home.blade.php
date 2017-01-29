@@ -97,8 +97,8 @@
                       <i class="glyphicon glyphicon-list-alt"></i> <span>Menu</span>
                   </a>
                   <ul class="treeview-menu">
-                    <li><a href="{{ route('menu.index') }}">Daftar Menu</a></li>
-                    <li><a href="/home/menubaru">Daftar Menu Baru</a></li>
+                    <li><a href="{{ route('menu.index') }}">Menu</a></li>
+                    <li><a href="/home/menubaru">Menu Baru</a></li>
                   </ul>
               </li>
               <li calss="treeview">
@@ -147,7 +147,48 @@
             @if (Auth::user()->status == 'koki')
               <li calss="treeview">
                   <a href="{{ route('pesanan.index') }}">
-                      <i class="glyphicon glyphicon-inbox"></i> <span>Daftar Pesanan</span>
+                      <i class="glyphicon glyphicon-list-alt"></i> <span>Pesanan</span>
+                  </a>
+              </li>
+              <li calss="treeview">
+                  <a href="{{ route('bahan.index') }}">
+                      <i class="glyphicon glyphicon-inbox"></i> <span>Bahan</span>
+                  </a>
+              </li>
+              <li calss="treeview">
+                  <a href="{{ route('menu.index') }}">
+                      <i class="glyphicon glyphicon-th-list"></i> <span>Menu</span>
+                  </a>
+              </li>
+              <li calss="treeview">
+                  <a href="{{ URL::to('/home/menubaru') }}">
+                      <i class="glyphicon glyphicon-edit"></i> <span>Daftar Menu Baru</span>
+                  </a>
+              </li>
+            @endif
+            @if (Auth::user()->status == 'kasir')
+              <li calss="treeview">
+                  <a href="{{ route('pesanan.index') }}">
+                      <i class="glyphicon glyphicon-inbox"></i> <span>Pesanan</span>
+                  </a>
+              </li>
+            @endif
+            @if (Auth::user()->status == 'pantry')
+              <li calss="treeview">
+                  <a href="{{ route('bahan.index') }}">
+                      <i class="glyphicon glyphicon-inbox"></i> <span>Bahan</span>
+                  </a>
+              </li>
+              <li calss="treeview">
+                  <a href="{{ route('menu.index') }}">
+                      <i class="glyphicon glyphicon-th-list"></i> <span>Menu</span>
+                  </a>
+              </li>
+            @endif
+            @if (Auth::user()->status == 'customerservice')
+              <li calss="treeview">
+                  <a href="{{ route('kuisioner.index') }}">
+                      <i class="glyphicon glyphicon-question-sign"></i> <span>Kuisioner</span>
                   </a>
               </li>
             @endif
@@ -238,6 +279,8 @@
           .html('<i class="glyphicon glyphicon-minus"></i>');
         tambahbahan.find('.label-bahan').text('');
         tambahbahan.find('.jumlah-bahan').val('');
+        tambahbahan.find('.class-bahan').val('');
+        tambahbahan.find('.class-satuan').val('');
         bahanterakhir.after(tambahbahan);
       });
   });
@@ -255,6 +298,7 @@
           .html('<i class="glyphicon glyphicon-minus"></i>');
         menu.find('.label-menu').text('');
         menu.find('.jumlah-menu').val('');
+        menu.find('.bahan').val('');
         menuterakhir.after(menu);
       });
   });
