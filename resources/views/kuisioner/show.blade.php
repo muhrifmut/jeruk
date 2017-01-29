@@ -271,6 +271,8 @@
 						      </tr>
 						    </tbody>
 						  </table>
+						  <small>* Keterangan: STS = Sangat Tidak Setuju, TS = Tidak Setuju, KS = Kurang Setuju, S = Setuju, SS = Sangat Setuju.</small>
+						  <br>
 					</div>
 				</div>
 

@@ -5,7 +5,7 @@
 	<div class="col-lg-12">
 		<div class="box box-primary">
 			<div class="box-header">
-				<h3 class="pull-left">Kuisioner <a href="{{ route('kuisioner.create') }}" class="btn btn-xs btn-success pull-right" style="margin-left: 10px; margin-top: 3px"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></h3>
+				<h3 class="pull-left">Kuisioner @if (Auth::user()->status == 'customerservice')<a href="{{ route('kuisioner.create') }}" class="btn btn-xs btn-success pull-right" style="margin-left: 10px; margin-top: 3px"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>@endif</h3>
 			</div>
 			<div class="container">
 				<div class="row">

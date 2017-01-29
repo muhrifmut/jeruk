@@ -84,7 +84,7 @@ class PesananController extends Controller
                 $datamenu->update([
                     'jumlah' => $datamenu->jumlah - $jumlah[$key],
                 ]);
-
+                /*
                 $bahanmenu = \App\BahanMenu::where('menu_id', $menu[$key])->get();
                 foreach ( $bahanmenu as $k => $v) {
                     $bahan = \App\Bahan::where('id', $bahanmenu[$k]->bahan_id)->first();
@@ -92,11 +92,14 @@ class PesananController extends Controller
                         'stock' => $bahan->stock - ($bahanmenu[$k]->jumlah_bahan * $jumlah[$key]),
                     ]);
                 }
+                */
                 $meja = Meja::where('id', $request->input('meja'));
                 $meja->update(['status' => 0]);
-                return redirect()->route('pesanan.index')->with('message', ['type' => 'success', 'text' => 'Pemesanan berhasil.']);
+                
             }
         }
+
+        return redirect()->route('pesanan.index')->with('message', ['type' => 'success', 'text' => 'Pemesanan berhasil.']);
 
         
     }

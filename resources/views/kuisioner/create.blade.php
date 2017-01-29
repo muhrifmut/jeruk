@@ -55,77 +55,79 @@
 						      <tr>
 						        <td>1</td>
 						        <td>Karyawan restoran cekatan dalam menangani kebutuhan Anda.</td>
-						        <td><label><input type="radio" name="jawaban1" value="1"></label></td>
-						        <td><label><input type="radio" name="jawaban1" value="2"></label></td>
-						        <td><label><input type="radio" name="jawaban1" value="3"></label></td>
-						        <td><label><input type="radio" name="jawaban1" value="4"></label></td>
-						        <td><label><input type="radio" name="jawaban1" value="5"></label></td>
+						        <td><label><input type="radio" name="jawaban-1" value="1"></label></td>
+						        <td><label><input type="radio" name="jawaban-1" value="2"></label></td>
+						        <td><label><input type="radio" name="jawaban-1" value="3"></label></td>
+						        <td><label><input type="radio" name="jawaban-1" value="4"></label></td>
+						        <td><label><input type="radio" name="jawaban-1" value="5"></label></td>
 						      </tr>
 						      <tr>
 						        <td>2</td>
 						        <td>Saya tidak terlalu lama menunggu pesanan.</td>
-						        <td><label><input type="radio" name="jawaban2" value="1"></label></td>
-						        <td><label><input type="radio" name="jawaban2" value="2"></label></td>
-						        <td><label><input type="radio" name="jawaban2" value="3"></label></td>
-						        <td><label><input type="radio" name="jawaban2" value="4"></label></td>
-						        <td><label><input type="radio" name="jawaban2" value="5"></label></td>
+						        <td><label><input type="radio" name="jawaban-2" value="1"></label></td>
+						        <td><label><input type="radio" name="jawaban-2" value="2"></label></td>
+						        <td><label><input type="radio" name="jawaban-2" value="3"></label></td>
+						        <td><label><input type="radio" name="jawaban-2" value="4"></label></td>
+						        <td><label><input type="radio" name="jawaban-2" value="5"></label></td>
 						      </tr>
 						      <tr>
 						        <td>3</td>
 						        <td>Karyawan restoran memiliki pengetahuan tentang menu yang di pesan.</td>
-						        <td><label><input type="radio" name="jawaban3" value="1"></label></td>
-						        <td><label><input type="radio" name="jawaban3" value="2"></label></td>
-						        <td><label><input type="radio" name="jawaban3" value="3"></label></td>
-						        <td><label><input type="radio" name="jawaban3" value="4"></label></td>
-						        <td><label><input type="radio" name="jawaban3" value="5"></label></td>
+						        <td><label><input type="radio" name="jawaban-3" value="1"></label></td>
+						        <td><label><input type="radio" name="jawaban-3" value="2"></label></td>
+						        <td><label><input type="radio" name="jawaban-3" value="3"></label></td>
+						        <td><label><input type="radio" name="jawaban-3" value="4"></label></td>
+						        <td><label><input type="radio" name="jawaban-3" value="5"></label></td>
 						      </tr>
 						      <tr>
 						        <td>4</td>
 						        <td>Cita rasa menu yang disajikan selalu sama setiap saat.</td>
-						        <td><label><input type="radio" name="jawaban4" value="1"></label></td>
-						        <td><label><input type="radio" name="jawaban4" value="2"></label></td>
-						        <td><label><input type="radio" name="jawaban4" value="3"></label></td>
-						        <td><label><input type="radio" name="jawaban4" value="4"></label></td>
-						        <td><label><input type="radio" name="jawaban4" value="5"></label></td>
+						        <td><label><input type="radio" name="jawaban-4" value="1"></label></td>
+						        <td><label><input type="radio" name="jawaban-4" value="2"></label></td>
+						        <td><label><input type="radio" name="jawaban-4" value="3"></label></td>
+						        <td><label><input type="radio" name="jawaban-4" value="4"></label></td>
+						        <td><label><input type="radio" name="jawaban-4" value="5"></label></td>
 						      </tr>
 						      <tr>
 						        <td>5</td>
 						        <td>Saya merasa puas dengan pelayanan yang cepat dan tepat diberikan restoran.</td>
-						        <td><label><input type="radio" name="jawaban5" value="1"></label></td>
-						        <td><label><input type="radio" name="jawaban5" value="2"></label></td>
-						        <td><label><input type="radio" name="jawaban5" value="3"></label></td>
-						        <td><label><input type="radio" name="jawaban5" value="4"></label></td>
-						        <td><label><input type="radio" name="jawaban5" value="5"></label></td>
+						        <td><label><input type="radio" name="jawaban-5" value="1"></label></td>
+						        <td><label><input type="radio" name="jawaban-5" value="2"></label></td>
+						        <td><label><input type="radio" name="jawaban-5" value="3"></label></td>
+						        <td><label><input type="radio" name="jawaban-5" value="4"></label></td>
+						        <td><label><input type="radio" name="jawaban-5" value="5"></label></td>
 						      </tr>
 						      <tr>
 						        <td>6</td>
 						        <td>Saya merasa puas dengan kenyamanan, keamanan, dan kebersiahn restoran.</td>
-						        <td><label><input type="radio" name="jawaban6" value="1"></label></td>
-						        <td><label><input type="radio" name="jawaban6" value="2"></label></td>
-						        <td><label><input type="radio" name="jawaban6" value="3"></label></td>
-						        <td><label><input type="radio" name="jawaban6" value="4"></label></td>
-						        <td><label><input type="radio" name="jawaban6" value="5"></label></td>
+						        <td><label><input type="radio" name="jawaban-6" value="1"></label></td>
+						        <td><label><input type="radio" name="jawaban-6" value="2"></label></td>
+						        <td><label><input type="radio" name="jawaban-6" value="3"></label></td>
+						        <td><label><input type="radio" name="jawaban-6" value="4"></label></td>
+						        <td><label><input type="radio" name="jawaban-6" value="5"></label></td>
 						      </tr>
 						      <tr>
 						        <td>7</td>
 						        <td>Saya merasa puas dengan cita rasa makanan atau minuman disediakan.</td>
-						        <td><label><input type="radio" name="jawaban7" value="1"></label></td>
-						        <td><label><input type="radio" name="jawaban7" value="2"></label></td>
-						        <td><label><input type="radio" name="jawaban7" value="3"></label></td>
-						        <td><label><input type="radio" name="jawaban7" value="4"></label></td>
-						        <td><label><input type="radio" name="jawaban7" value="5"></label></td>
+						        <td><label><input type="radio" name="jawaban-7" value="1"></label></td>
+						        <td><label><input type="radio" name="jawaban-7" value="2"></label></td>
+						        <td><label><input type="radio" name="jawaban-7" value="3"></label></td>
+						        <td><label><input type="radio" name="jawaban-7" value="4"></label></td>
+						        <td><label><input type="radio" name="jawaban-7" value="5"></label></td>
 						      </tr>
 						      <tr>
 						        <td>8</td>
 						        <td>Peralatan makanan yang digunakan lengkap.</td>
-						        <td><label><input type="radio" name="jawaban8" value="1"></label></td>
-						        <td><label><input type="radio" name="jawaban8" value="2"></label></td>
-						        <td><label><input type="radio" name="jawaban8" value="3"></label></td>
-						        <td><label><input type="radio" name="jawaban8" value="4"></label></td>
-						        <td><label><input type="radio" name="jawaban8" value="5"></label></td>
+						        <td><label><input type="radio" name="jawaban-8" value="1"></label></td>
+						        <td><label><input type="radio" name="jawaban-8" value="2"></label></td>
+						        <td><label><input type="radio" name="jawaban-8" value="3"></label></td>
+						        <td><label><input type="radio" name="jawaban-8" value="4"></label></td>
+						        <td><label><input type="radio" name="jawaban-8" value="5"></label></td>
 						      </tr>
 						    </tbody>
 						  </table>
+						  <small>* Keterangan: STS = Sangat Tidak Setuju, TS = Tidak Setuju, KS = Kurang Setuju, S = Setuju, SS = Sangat Setuju.</small>
+						  <br>
 					</div>
 				</div>
 

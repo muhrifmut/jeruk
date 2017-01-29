@@ -89,7 +89,6 @@ class PembayaranController extends Controller
             'pegawai_id' => \Auth::user()->id,
             'pesanan_id' => $id,
             'total_harga' => $request->input('total_harga'),
-            'kuisioner' => 0,
         ]);
         
         $pesanan = Pesanan::find($id);

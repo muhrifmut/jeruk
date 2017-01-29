@@ -107,11 +107,6 @@
                   </a>
               </li>
               <li calss="treeview">
-                  <a href="{{ route('meja.index') }}">
-                      <i class="glyphicon glyphicon-th"></i> <span>Meja</span>
-                  </a>
-              </li>
-              <li calss="treeview">
                   <a href="{{ route('pesanan.index') }}">
                       <i class="glyphicon glyphicon-pencil"></i> <span>Pesanan</span>
                   </a>

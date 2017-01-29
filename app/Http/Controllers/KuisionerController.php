@@ -51,19 +51,20 @@ class KuisionerController extends Controller
         $kuisioner = Kuisioner::create([
             'nama' => $request->input('nama'),
             'umur' => $request->input('usia'),
-            'transaksi_id' => 1,
+            'transaksi_id' => $request->input('transaksi'),
             'kritikatausaran' => $request->input('kritikatausaran'),
         ]);
 
-        
-        for ($i=0; $i = 8; $i++) {
+        for ($i=1; $i < 9; $i++) { 
+            # code...
             $pertanyaan = new Pertanyaan;
             $pertanyaan->kuisioner()->associate($kuisioner); 
             $pertanyaan->pertanyaan = $i;
-            $pertanyaan->jawaban = $request->input('jawaban'.$i);
+            $pertanyaan->jawaban = $request->input('jawaban-'.$i);
             $pertanyaan->save();
-            $i = $i + 1;
         }
+
+        return redirect()->route('kuisioner.index')->with('message', ['type' => 'success', 'text' => 'Kuisioner telah dibuat.']);
     }
 
     /**

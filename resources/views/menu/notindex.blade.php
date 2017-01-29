@@ -60,9 +60,6 @@
             <div class="box box-primary">
             <div class="box-header">
                 <h3 class="pull-left">Data Menu</h3>
-                <a href="{{ route('menu.create') }}" class="btn btn-success pull-right">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Tambah Menu
-                </a>
             </div>
             <div class="box-body">
                 <table class="table" id="table">

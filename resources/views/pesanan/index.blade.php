@@ -22,7 +22,9 @@
                         <td class="col-md-2">Pesanan</td>
                         <td class="col-md-2">Status</td>
                         <td class="col-md-2">Pembayaran</td>
+                        @if((Auth::user()->status == 'pelayan') or (Auth::user()->status == 'kasir') or (Auth::user()->status == 'koki'))
                         <td class="col-md-2"></td>
+                        @endif
                     </tr>
                     </thead>
                     <tbody class="table-hover">
@@ -54,6 +56,7 @@
                                         <center><span class="label label-success">Sudah dibayar</span></center>
                                     @endif
                                 </td>
+                                @if((Auth::user()->status == 'pelayan') or (Auth::user()->status == 'kasir') or (Auth::user()->status == 'koki'))
                                 <td>
                                     <center>
                                     @if(Auth::user()->status == 'koki')
@@ -65,7 +68,7 @@
                                         @endif
                                     @endif
 
-                                    @if(Auth::user()->status == 'pelayan' or 'kasir')
+                                    @if((Auth::user()->status == 'pelayan') or (Auth::user()->status == 'kasir'))
                                         {{ Form::open(['method' => 'DELETE', 'route' => ['pesanan.destroy', $p->id]]) }}
                                             @if($ip->pembayaran == 0)
                                                 <a href="{{ route('pembayaran.edit', $p->id) }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-ok"></i> Bayar</a>
@@ -77,6 +80,7 @@
                                         </center>
                                     @endif
                                 </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>
